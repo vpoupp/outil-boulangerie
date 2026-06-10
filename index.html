@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🥖 Les 6 postes énergie à surveiller en boulangerie</title>
+<meta name="description" content="🥖 Les 6 postes énergie à surveiller en boulangerie — outil interactif pour repérer vos usages personnalisés qui peuvent faire grimper le budget électricité.">
+<style>
+:root{
+  --ink:#2d2d2d;--muted:#666;--accent:#b85c1a;--accent-dark:#8a3f0e;--dark:#6b3010;
+  --line:#e0d4c6;--soft:#fffaf4;--green:#2f7d32;--amber:#b7791f;--red:#b83232;
+}
+*{box-sizing:border-box}
+html{background:#eee6db}
+body{
+  margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);line-height:1.45;
+  background-color:#eee6db;
+  background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%20360%20360%27%3E%3Crect%20width%3D%27360%27%20height%3D%27360%27%20fill%3D%27%23f0e5d6%27/%3E%3Cg%20fill%3D%27none%27%20stroke%3D%27%23c99a62%27%20stroke-width%3D%272%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%20opacity%3D%270.36%27%3E%3Cpath%20d%3D%27M42%2096%20C82%2072%20126%2072%20168%2096%20C126%20120%2082%20120%2042%2096Z%27/%3E%3Cpath%20d%3D%27M72%2091%20C76%2082%2088%2078%2098%2086%27/%3E%3Cpath%20d%3D%27M104%2088%20C110%2078%20124%2078%20134%2088%27/%3E%3Cpath%20d%3D%27M222%20246%20C262%20222%20306%20222%20348%20246%20C306%20270%20262%20270%20222%20246Z%27/%3E%3Cpath%20d%3D%27M252%20241%20C256%20232%20268%20228%20278%20236%27/%3E%3Cpath%20d%3D%27M284%20238%20C290%20228%20304%20228%20314%20238%27/%3E%3C/g%3E%3Cg%20fill%3D%27none%27%20stroke%3D%27%23b8874d%27%20stroke-width%3D%271.8%27%20stroke-linecap%3D%27round%27%20opacity%3D%270.28%27%3E%3Cpath%20d%3D%27M280%2038%20L280%20126%27/%3E%3Cpath%20d%3D%27M280%2064%20C258%2052%20250%2038%20248%2024%27/%3E%3Cpath%20d%3D%27M280%2082%20C302%2070%20310%2056%20312%2042%27/%3E%3Cpath%20d%3D%27M280%20102%20C258%2090%20250%2076%20248%2062%27/%3E%3Cpath%20d%3D%27M76%20236%20L76%20324%27/%3E%3Cpath%20d%3D%27M76%20262%20C54%20250%2046%20236%2044%20222%27/%3E%3Cpath%20d%3D%27M76%20282%20C98%20270%20106%20256%20108%20242%27/%3E%3Cpath%20d%3D%27M76%20302%20C54%20290%2046%20276%2044%20262%27/%3E%3C/g%3E%3Cg%20fill%3D%27%23caa170%27%20opacity%3D%270.22%27%3E%3Ccircle%20cx%3D%27190%27%20cy%3D%2754%27%20r%3D%274%27/%3E%3Ccircle%20cx%3D%27204%27%20cy%3D%2748%27%20r%3D%273.5%27/%3E%3Ccircle%20cx%3D%27216%27%20cy%3D%2758%27%20r%3D%273.5%27/%3E%3Ccircle%20cx%3D%27198%27%20cy%3D%2768%27%20r%3D%273%27/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat:repeat;background-size:300px 300px;
+}
+.app{max-width:1180px;margin:0 auto;padding:28px 22px 60px}
+.hero,.card,.post,.summary{background:#fdfaf6;border:1px solid var(--line);border-radius:16px;box-shadow:0 4px 12px rgba(0,0,0,.04);padding:18px;margin-bottom:18px}
+.hero{padding:28px}
+.tag{display:inline-block;padding:6px 10px;border-radius:999px;background:#ffebd5;color:var(--accent-dark);border:1px solid #f0c9a0;font-weight:bold;font-size:13px;margin-bottom:12px}
+h1,h2,h3{margin:0 0 12px}
+h1{font-size:34px;line-height:1.1;color:#5b2006}
+h2{font-size:24px;color:var(--dark)}
+h3{font-size:18px;color:var(--dark)}
+h4{margin:0 0 10px;color:var(--dark)}
+p{margin:0 0 10px}
+ul,ol{margin:8px 0 8px 20px;padding:0}
+.lead{font-size:17px;max-width:980px}
+.mini{font-size:13px;color:var(--muted)}
+.smallcaps{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#8c3d10;font-weight:bold}
+.grid{display:grid;gap:18px}
+.g2{grid-template-columns:1.15fr .85fr}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.posts{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:stretch}
+label{display:block;font-weight:bold;margin:10px 0 6px;font-size:14px}
+input[type=text],input[type=date],select,textarea{width:100%;padding:10px 12px;border:1px solid #cdbfb0;border-radius:10px;background:white;font:inherit}
+textarea{min-height:78px;resize:vertical}
+.post{display:flex;flex-direction:column}
+.post .note{margin-top:auto}
+.postnotes{height:78px;min-height:78px;max-height:120px;overflow-y:auto;resize:vertical}
+.q{border-top:1px solid #efe5da;padding:10px 0}
+.q:first-of-type{border-top:0}
+.q label{display:flex;align-items:flex-start;gap:8px;font-weight:normal;margin:0}
+.q input{margin-top:3px}
+.num{float:right;width:30px;height:30px;border-radius:50%;background:#ffebd5;color:#8a3f0e;display:flex;align-items:center;justify-content:center;font-weight:bold}
+.note{background:var(--soft);border:1px dashed #d8c1a6;border-radius:12px;padding:12px;margin-top:12px}
+.example{font-size:12px;color:var(--muted);background:#faf6f1;border:1px solid #eadccc;border-radius:10px;padding:8px 10px;margin:6px 0 8px;line-height:1.35}
+.counter{font-size:12px;color:var(--muted);text-align:center;margin-top:6px}
+
+/* --- tableaux communs --- */
+.tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.tbl-mobile-hint{display:none}
+.grid-tbl{width:100%;border-collapse:collapse}
+.grid-tbl th,.grid-tbl td{border:1px solid #d8cec2;text-align:center;padding:8px 6px;background:white;font-size:14px}
+.grid-tbl th:first-child,.grid-tbl td:first-child{position:sticky;left:0;z-index:1;min-width:200px;text-align:left;background:#fff9f2;font-weight:bold;font-size:13px}
+.grid-tbl th{background:#fff6ec;font-weight:bold;font-size:13px;color:#5b2006}
+.grid-tbl th:first-child{background:#fff6ec}
+.cell{cursor:pointer;user-select:none;font-weight:bold;min-width:52px}
+.cell.active{background:#ffe1bc}
+.cell.strong{background:#e07c35;color:white}
+
+/* section 2a : horaire */
+.hour-sub{font-size:11px;color:var(--muted);display:block;font-weight:normal;margin-top:2px}
+
+/* section 2b : saisonnier */
+.legend,.month-legend{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px;font-size:13px;color:var(--muted)}
+.sw{display:inline-block;width:14px;height:14px;border-radius:4px;border:1px solid #bfa384;margin-right:6px;vertical-align:-2px}
+.s0{background:white}.s1{background:#ffe1bc}.s2{background:#e07c35}
+
+.section-label{display:inline-block;background:#ffebd5;color:#8a3f0e;border:1px solid #f0c9a0;border-radius:8px;padding:4px 10px;font-size:12px;font-weight:bold;margin-bottom:10px}
+
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+.badge{display:inline-block;border-radius:999px;padding:6px 10px;font-weight:bold;font-size:12px;border:1px solid #ddd}
+.low{background:#eaf6ea;color:var(--green);border-color:#cce4cc}
+.mid{background:#fff2df;color:var(--amber);border-color:#efd4a8}
+.high{background:#fde8e8;color:var(--red);border-color:#efb6b6}
+.annual-calendar{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin:10px 0}
+.month-pill{border:1px solid #d9cec1;border-radius:10px;padding:10px 6px;text-align:center;font-size:12px;font-weight:bold;background:white}
+.month-pill.low-watch{background:#eaf6ea;color:var(--green);border-color:#cce4cc}
+.month-pill.mid-watch{background:#fff2df;color:var(--amber);border-color:#efd4a8}
+.month-pill.high-watch{background:#fde8e8;color:var(--red);border-color:#efb6b6}
+table.monitor{width:100%;border-collapse:collapse}
+.monitor th,.monitor td{border:1px solid #d9cec1;padding:10px;vertical-align:top;background:white}
+.monitor th{background:#fff6ec;text-align:left}
+.monitor-cards{display:none}
+.sep{height:1px;background:#eadccc;margin:22px 0}
+.footer{font-size:12px;color:var(--muted);text-align:right;margin-top:16px}
+.field-help{font-size:12px;color:var(--muted);margin:6px 0 0;line-height:1.35}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+button{border:none;border-radius:10px;padding:12px 16px;cursor:pointer;font:inherit;font-weight:bold;background:var(--accent);color:white}
+button.light{background:white;color:#7b2e08;border:1px solid #d8c1a6}
+button.secondary{background:#6c757d}
+.vanessa-block{margin-top:18px;border:1px solid #e0b98f;background:#fff3e6;border-radius:16px;padding:18px 20px;box-shadow:0 4px 12px rgba(0,0,0,.04)}
+.vanessa-block h3{margin:0 0 10px;color:#6b3010}
+.vanessa-block p{margin:0 0 10px}
+.contact-action-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}
+.contact-action-item{min-width:0;text-align:center}
+.vanessa-btn{display:inline-block;width:100%;background:#b85c1a;color:#fff!important;border:1px solid #984a12;border-radius:999px;padding:10px 16px;font-weight:bold;text-decoration:none!important;text-align:center}
+.contact-detail{display:block;margin:7px auto 0;color:#6b3010;font-size:14px;font-weight:bold;line-height:1.25;text-align:center;word-break:normal;overflow-wrap:normal;white-space:nowrap}
+.email-detail{font-size:13px}
+.print-doc{display:none}
+.date-field{position:relative;width:100%}
+.date-field input[type=date]{width:100%;padding-right:46px!important;background:#fff!important;color:#111!important;color-scheme:light}
+.date-icon{position:absolute;right:12px;top:50%;transform:translateY(-50%);pointer-events:none;font-size:18px;line-height:1}
+
+@media(max-width:1050px){.posts{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:760px){
+  body{background-size:260px 260px}
+  .app{padding:14px 10px 42px}
+  .hero,.card,.post,.summary{border-radius:14px;padding:16px}
+  .hero{padding:18px}
+  h1{font-size:26px;line-height:1.12}
+  h2{font-size:21px}
+  h3{font-size:17px}
+  .lead{font-size:15px}
+  .g2,.cols,.posts{grid-template-columns:1fr!important}
+  input[type=text],input[type=date],select,textarea{font-size:16px;max-width:100%}
+  input[type=date]{display:block;width:100%;min-width:0;text-align:left;padding-right:10px;-webkit-appearance:none;appearance:none}
+  .tbl-mobile-hint{display:block;background:#ffebd5;color:#6b3010;border:1px solid #f0c9a0;border-radius:10px;padding:9px 10px;font-size:14px;font-weight:bold;margin:10px 0}
+  .tbl-wrap{display:block;width:100%;max-width:100%;overflow-x:auto!important;overflow-y:hidden;border:1px solid #eadccc;border-radius:12px}
+  .grid-tbl{width:max-content!important;min-width:600px!important;table-layout:auto!important}
+  .grid-tbl th,.grid-tbl td{padding:9px 7px;white-space:nowrap}
+  .grid-tbl th:first-child,.grid-tbl td:first-child{position:sticky;left:0;z-index:2;min-width:170px!important;max-width:170px!important;white-space:normal}
+  table.monitor{display:none!important}
+  .monitor-cards{display:grid!important;grid-template-columns:1fr;gap:12px;margin-top:10px}
+  .monitor-card{background:#fffdfb;border:1px solid #d9cec1;border-radius:14px;padding:14px}
+  .monitor-card div{border-top:1px solid #efe5da;padding-top:9px;margin-top:9px}
+  .monitor-card div:first-of-type{border-top:0;padding-top:0;margin-top:0}
+  .monitor-card strong{display:block;color:#6b3010;margin-bottom:3px}
+  .monitor-card p{margin:0}
+  .annual-calendar{grid-template-columns:repeat(3,1fr)!important}
+  .btns{flex-direction:column}
+  .btns button{width:100%}
+  .contact-action-grid{grid-template-columns:1fr;gap:14px}
+  .vanessa-btn{font-size:17px;padding:13px 16px}
+  .contact-detail{font-size:16px}
+  .email-detail{font-size:14px;white-space:normal;overflow-wrap:anywhere;word-break:normal;line-height:1.25}
+  .field-help{font-size:13px}
+  .date-field input[type=date]{min-height:46px;-webkit-appearance:none!important;appearance:none!important}
+  .date-field input[type=date]::-webkit-calendar-picker-indicator{opacity:0!important}
+}
+@media(max-width:390px){.email-detail{font-size:13px;letter-spacing:-.2px}}
+
+@media print{
+  @page{size:A4 portrait;margin:7mm}
+  html,body{margin:0!important;padding:0!important;width:auto!important;max-width:none!important;overflow:visible!important;background:#eee6db!important;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+  .app{display:none!important}
+  .print-doc{display:block!important;width:100%!important;max-width:100%!important;overflow:visible!important}
+  .print-page{box-sizing:border-box!important;width:100%!important;max-width:100%!important;min-height:0!important;height:auto!important;margin:0!important;padding:0!important;overflow:visible!important;background:transparent!important;page-break-after:auto!important;break-after:auto!important}
+  .print-page+.print-page{page-break-before:always!important;break-before:page!important}
+  .print-card{width:100%!important;max-width:100%!important;overflow:visible!important;background:#fdfaf6!important;border:1px solid #d8cec2;border-radius:12px;padding:10px 11px;box-shadow:none;break-inside:avoid;page-break-inside:avoid;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+  .print-tag{display:inline-block;padding:4px 8px;border-radius:999px;background:#ffebd5;color:#8a3f0e;border:1px solid #f0c9a0;font-weight:700;font-size:9px;margin-bottom:8px}
+  .print-title{font-size:20px!important;line-height:1.08;color:#5b2006;margin:0 0 8px}
+  .print-lead{font-size:10px!important;margin:0 0 10px}
+  .print-grid-2{display:grid!important;grid-template-columns:1fr 1fr!important;gap:4mm!important}
+  .print-section-title{font-size:16px;color:#6b3010;margin:0 0 6px}
+  .print-kicker{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#8c3d10;font-weight:700;margin-bottom:3px}
+  .print-footer{text-align:right;color:#666;font-size:8.5px;margin-top:6px}
+  .print-small{font-size:9px;color:#555}
+  .print-table{width:100%!important;max-width:100%!important;table-layout:fixed!important;border-collapse:collapse!important;font-size:8.5px;margin-top:5px}
+  .print-table th,.print-table td{border:1px solid #d8cec2;padding:3px 3px!important;vertical-align:top;background:#fff;overflow-wrap:anywhere!important;word-break:normal!important;hyphens:auto!important;line-height:1.15!important}
+  .print-table th{background:#fff6ec;text-align:left;color:#5b2006;font-size:7.8px!important}
+  .print-table td{font-size:7.6px!important}
+  .print-intensity-1{background:#ffe1bc!important;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;text-align:center!important;font-weight:700!important}
+  .print-intensity-2{background:#e07c35!important;color:#fff!important;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;text-align:center!important;font-weight:700!important}
+  .print-empty-cell{text-align:center!important}
+  .print-note{white-space:pre-wrap;overflow-wrap:anywhere;background:#fff;border:1px solid #eadccc;border-radius:8px;padding:5px 6px;margin-top:4px;font-size:8.8px}
+  .print-badges{display:flex;gap:4px;flex-wrap:wrap;margin:5px 0 8px}
+  .print-badge{padding:3px 6px;border-radius:999px;font-weight:700;font-size:8.5px;border:1px solid #ddd}
+  .pb-low{background:#eaf6ea;color:#2f7d32;border-color:#cce4cc}.pb-mid{background:#fff2df;color:#b7791f;border-color:#efd4a8}.pb-high{background:#fde8e8;color:#b83232;border-color:#efb6b6}
+  .print-calendar{display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin:5px 0}
+  .print-month{text-align:center;border:1px solid #d9cec1;border-radius:7px;padding:5px 2px;background:#fff;font-size:8.5px;font-weight:700}
+  .print-month.low-watch{background:#eaf6ea;color:#2f7d32;border-color:#cce4cc}.print-month.mid-watch{background:#fff2df;color:#b7791f;border-color:#efd4a8}.print-month.high-watch{background:#fde8e8;color:#b83232;border-color:#efb6b6}
+  .print-roadmap-title{margin-top:12px!important}
+  .print-vanessa{margin-top:8px;background:#fff3e6!important;border:1.5px solid #e0b98f;border-radius:10px;padding:7px 9px;font-size:8.5px;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+  .print-vanessa p{margin:0 0 4px}
+  .print-actions{display:grid!important;grid-template-columns:1fr 1fr!important;gap:6mm!important;align-items:start!important}
+  .print-actions>div{text-align:center!important}
+  .print-btn{display:inline-block!important;width:auto!important;min-width:38mm!important;text-align:center!important;background:#b85c1a!important;color:#fff!important;border-radius:999px;padding:5px 8px;font-weight:bold;text-decoration:none!important;border:1px solid #984a12;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+  .print-contact-detail{text-align:center!important;color:#6b3010;font-size:8px;font-weight:bold;margin-top:3px!important}
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <section class="hero">
+    <div class="tag">Budget électricité</div>
+    <h1>🥖 Les 6 postes énergie à surveiller en boulangerie</h1>
+    <p class="lead">Un outil simple pour repérer vos usages à surveiller et construire une base de suivi énergie. Vous décrivez votre situation ; l'outil traduit ces informations en points de vigilance sur la <strong>surconsommation</strong> et la <strong>puissance appelée</strong>, qui viennent impacter votre facture d'électricité.</p>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><h3>Le principe</h3><ul><li>Vous cochez uniquement des faits observables.</li><li>Vous indiquez quand vos équipements fonctionnent.</li><li>La synthèse repère les postes et les moments qui méritent attention.</li><li>Le document peut être imprimé ou conservé comme base de suivi.</li></ul><p class="mini">Ce document n'est pas un audit technique ou financier : c'est un support pédagogique de repérage et de surveillance.</p></div>
+      <div class="card"><h3>Vos informations</h3><label>Nom de la boulangerie</label><input id="nom" type="text" placeholder="Ex. Boulangerie du Centre" autocomplete="off" value=""><div class="cols"><div><label>Date</label><div class="date-field"><input id="date" type="date" autocomplete="off" value=""><span class="date-icon" aria-hidden="true">📅</span></div></div><div><label>Type de boulangerie</label><select id="segment"><option>Boulangerie artisanale</option><option>Boulangerie avec snacking</option><option>Boulangerie-pâtisserie</option><option>Boulangerie-traiteur</option><option>Autre</option></select></div></div></div>
+    </div>
+    <div class="footer">© Vanessa Pouppeville</div>
+  </section>
+
+  <section class="card">
+    <div class="smallcaps">1. Checklist factuelle</div><h2>Les 6 postes énergie à surveiller</h2>
+    <p>Cochez les équipements et les usages présents dans votre boulangerie. La synthèse vous aidera ensuite à repérer les postes qui méritent une attention particulière.</p>
+    <div class="posts" id="posts"></div>
+    <div class="footer">© Vanessa Pouppeville</div>
+  </section>
+
+  <section class="card">
+    <div class="smallcaps">2. Profil d'usage</div><h2>Quand et comment vos équipements fonctionnent-ils ?</h2>
+    <p>Cliquez dans les cases : <strong>vide</strong> = non concerné &nbsp;·&nbsp; <strong>•</strong> = actif &nbsp;·&nbsp; <strong>▲</strong> = actif et concentré / fort</p>
+
+    <div style="margin-bottom:22px">
+      <div class="section-label">Profil de journée &nbsp;·&nbsp; Puissance appelée &amp; simultanéité</div>
+      <p class="mini" style="margin-bottom:8px">Indiquez sur quelles tranches horaires chaque poste est actif dans une journée type. L'outil repère ensuite les tranches où plusieurs équipements se cumulent.</p>
+      <div class="tbl-mobile-hint">Faites glisser le tableau vers la droite pour voir toutes les tranches horaires →</div>
+      <div class="tbl-wrap"><table class="grid-tbl" id="hourTable"></table></div>
+      <div class="legend"><span><i class="sw s0"></i>Non actif</span><span><i class="sw s1"></i>Actif</span><span><i class="sw s2"></i>Actif et fort / concentré</span></div>
+    </div>
+
+
+    <div class="grid g2" style="margin-top:20px">
+      <div class="card"><h3>Ce que l'outil va déduire</h3><ul><li>Les tranches horaires où plusieurs équipements se superposent → risque de pic de puissance.</li><li>Les mois où une surconsommation anormale est possible sur froid, snacking ou pousse.</li></ul></div>
+      <div class="card"><h3>À retenir</h3><p>En boulangerie, le risque principal n'est pas "combien je consomme sur l'année" mais "quels équipements tournent en même temps le matin" et "est-ce que mon froid ou ma pousse dérivent sans que je le voie".</p></div>
+    </div>
+    <div class="footer">© Vanessa Pouppeville</div>
+  </section>
+
+  <section class="card">
+    <div class="smallcaps">3. Signaux déjà observés</div><h2>Ce que vous avez peut-être déjà remarqué</h2>
+    <div id="alerts"></div>
+    <label>Autres observations utiles</label>
+    <textarea id="autres_alertes" maxlength="400" placeholder="Ex. doute sur puissance souscrite, facture anormale, déclenchement de disjoncteur..."></textarea>
+    <div class="counter" id="autresCounter">0 / 400</div>
+    <div class="footer">© Vanessa Pouppeville</div>
+  </section>
+
+  <section class="summary">
+    <div class="smallcaps">4. Synthèse</div><h2>Votre base de surveillance des risques énergie</h2>
+    <div class="grid g2">
+      <div>
+        <h3>Lecture globale</h3>
+        <div id="global"></div>
+        <div id="badges" class="badges"></div>
+        <div class="sep"></div>
+        <div style="margin-top:14px">
+          <label>Sélectionnez la date du prochain contrôle des équipements électriques</label>
+          <div class="date-field"><input id="nextReview" type="date" autocomplete="off" value=""><span class="date-icon" aria-hidden="true">📅</span></div>
+          <p class="field-help">Ex. avant l'été, après un changement d'équipement ou à la réception d'une nouvelle facture.</p>
+        </div>
+      </div>
+      <div>
+        <h3>Vos 3 priorités de surveillance</h3>
+        <ol id="priorities"></ol>
+        <label>Notes / décisions de suivi</label>
+        <textarea id="notesSuivi" maxlength="400" placeholder="Notes"></textarea>
+        <div class="counter" id="notesSuiviCounter">0 / 400</div>
+      </div>
+    </div>
+    <div class="sep"></div>
+    <h3>Tableau de surveillance recommandé</h3>
+    <table class="monitor"><thead><tr><th>Poste / tranche</th><th>Ce que cela peut indiquer</th><th>Quand surveiller ?</th></tr></thead><tbody id="monitor"></tbody></table>
+    <div id="monitorCards" class="monitor-cards"></div>
+    <h3 style="margin-top:18px">Feuille de route simple</h3>
+    <ul id="roadmap"></ul>
+    <div class="vanessa-block">
+      <h3>Un mot de Vanessa</h3>
+      <p>Cet outil vous aide à identifier les usages qui peuvent faire grimper votre budget électricité. Mon accompagnement permet ensuite de réduire les charges administratives et financières liées à votre électricité : contrat, puissance souscrite, taxes, facturation et suivi de vos consommations.</p>
+      <p><strong>Un doute sur votre contrat ou votre facture d'électricité ?</strong><br>Contactez-moi pour faire le point.</p>
+      <p><strong>Vanessa Pouppeville</strong> — Conseillère énergie indépendante</p>
+      <div class="vanessa-actions contact-action-grid">
+        <div class="contact-action-item"><a class="vanessa-btn" href="mailto:vanessa@vpouppeville.com">M'envoyer un email</a><div class="contact-detail email-detail">vanessa@vpouppeville.com</div></div>
+        <div class="contact-action-item"><a class="vanessa-btn" href="tel:+33622296566">M'appeler</a><div class="contact-detail">06 22 29 65 66</div></div>
+      </div>
+    </div>
+    <div class="footer">© Vanessa Pouppeville</div>
+  </section>
+
+  <div class="btns">
+    <button type="button" id="btnShare">Partager l'outil</button>
+    <button type="button" id="btnPrint" class="light">Imprimer / Enregistrer en PDF</button>
+    <button type="button" id="btnReset" class="secondary">Réinitialiser</button>
+  </div>
+</div>
+<div id="printDoc" class="print-doc"></div>
+
+<script>
+const months=['Janv.','Févr.','Mars','Avr.','Mai','Juin','Juil.','Août','Sept.','Oct.','Nov.','Déc.'];
+
+// Tranches horaires journée type
+const hourSlots=[
+  {k:'nuit',   l:'Nuit',        sub:'0h – 3h'},
+  {k:'demo',   l:'Démarrage',   sub:'3h – 6h'},
+  {k:'matin',  l:'Matinée',     sub:'6h – 10h'},
+  {k:'midi',   l:'Service midi',sub:'10h – 14h'},
+  {k:'aprem',  l:'Après-midi',  sub:'14h – 18h'},
+  {k:'soir',   l:'Fermeture',   sub:'18h – 22h'}
+];
+
+const posts={
+  four:{
+    t:'Four / préchauffage / cuisson',
+    d:'Premier poste de la facture : 65 % des dépenses énergétiques. Le préchauffage génère l\'appel de puissance le plus fort du fournil.',
+    qs:['Four(s) électrique(s) présent(s)','Préchauffage démarré tôt le matin (avant 6h)','Préchauffage démarré en même temps que la chambre de pousse','Plusieurs fournées par jour nécessitant des remontées en température','Le four reste en veille chaude entre les fournées'],
+    w:'horaires de préchauffage, coïncidence avec pousse et froid, nombre de fournées',
+    ex:'Ex. préchauffage démarré vers 3h–4h, souvent en même temps que la chambre de pousse.',
+    hourRow:'four_h', seasonRow:null
+  },
+  demarrage:{
+    t:'Démarrage du fournil',
+    d:'Moment le plus sensible : plusieurs équipements s\'allument simultanément, souvent sans surveillance.',
+    qs:['Démarrage avant 5h du matin','Four en préchauffage et chambre de pousse allumés en même temps','Pétrin ou autres moteurs démarrés pendant le préchauffage du four','Froid permanent qui tourne déjà au moment du démarrage','Pas de décalage intentionnel entre les démarrages d\'équipements'],
+    w:'superposition des équipements au démarrage, décalage possible des mises en route',
+    ex:'Ex. four, pousse, pétrin et froid démarrent tous entre 3h et 4h sans échelonnement.',
+    hourRow:'demo_h', seasonRow:null
+  },
+  froid:{
+    t:'Production de froid',
+    d:'Deuxième poste : 22 % des dépenses. Risque de surconsommation si le froid travaille plus que nécessaire.',
+    qs:['Vitrine(s) réfrigérée(s) ou meuble(s) froid(s) présent(s)','Chambre froide ou cellule de refroidissement','Froid installé à proximité d\'une source de chaleur (four, snacking)','Ouvertures fréquentes des équipements froids','Joints, condensateur ou givre jamais ou rarement vérifiés'],
+    w:'fonctionnement du froid en période chaude, proximité du four, entretien des équipements froids',
+    ex:'Ex. meuble froid face au four snacking, condensateur non nettoyé depuis plus d\'un an.',
+    hourRow:'froid_h', seasonRow:'froid_s'
+  },
+  moteurs:{
+    t:'Moteurs de production',
+    d:'Pétrin, diviseuse, batteur, façonneuse, laminoir. Risque surtout en simultanéité pendant le préchauffage.',
+    qs:['Pétrin présent','Diviseuse, façonneuse ou laminoir présents','Batteur présent (pâtisserie)','Plusieurs moteurs peuvent tourner en même temps','Moteurs lancés pendant le préchauffage du four'],
+    w:'superposition des moteurs entre eux et avec le préchauffage du four',
+    ex:'Ex. pétrin et diviseuse démarrés pendant que le four chauffe encore.',
+    hourRow:'mot_h', seasonRow:null
+  },
+  pousse:{
+    t:'Pousse et usages nocturnes',
+    d:'Chambre de pousse utilisée la nuit ou très tôt. Risque de puissance si superposée au préchauffage, risque de surconso. en cas de défaut de régulation.',
+    qs:['Chambre de pousse contrôlée utilisée','Pousse programmée la nuit ou avant 5h du matin','Pousse démarrée en même temps que le préchauffage du four','Régulation thermique jamais vérifiée','Chambre de pousse qui fonctionne parfois au-delà du besoin réel'],
+    w:'horaires de pousse, coïncidence avec le préchauffage, régulation thermique',
+    ex:'Ex. chambre de pousse programmée à partir de 2h, préchauffage du four à 3h30.',
+    hourRow:'pousse_h', seasonRow:'pousse_s'
+  },
+  snacking:{
+    t:'Snacking / activité salée sur site',
+    d:'Second pic de puissance en journée. Risque élevé si l\'activité s\'est développée sans révision de la puissance souscrite.',
+    qs:['Activité snacking ou traiteur développée','Four à snacking, micro-ondes pro ou four à pizza présent','Bain-marie, maintien au chaud ou remise en température','Froid supplémentaire dédié au snacking','Lave-vaisselle ou plonge présents','La puissance souscrite n\'a pas été revue depuis l\'ajout du snacking'],
+    w:'second pic de puissance en journée, révision de la puissance souscrite, coïncidence avec d\'autres équipements',
+    ex:'Ex. four snacking et bain-marie allumés ensemble en milieu de matinée, puissance souscrite non revue depuis 5 ans.',
+    hourRow:'snack_h', seasonRow:'snack_s'
+  }
+};
+
+// Lignes du tableau horaire (6 postes)
+const hourRows=[
+  {k:'four_h',  l:'Four / préchauffage'},
+  {k:'demo_h',  l:'Démarrage fournil (simultanéité)'},
+  {k:'froid_h', l:'Production de froid'},
+  {k:'mot_h',   l:'Moteurs de production'},
+  {k:'pousse_h',l:'Chambre de pousse'},
+  {k:'snack_h', l:'Snacking / activité salée'}
+];
+
+// Lignes du tableau saisonnier (3 postes seulement)
+const seasonRows=[
+  {k:'froid_s', l:'Froid — surconsommation anormale'},
+  {k:'pousse_s',l:'Pousse — défaut de régulation'},
+  {k:'snack_s', l:'Snacking — surcharge inhabituelle'}
+];
+
+const alerts=[
+  'Facture plus élevée en été (froid qui travaille plus)',
+  'Déclenchement du disjoncteur, notamment le matin au démarrage',
+  'Factures qui ont augmenté depuis l\'ajout du snacking',
+  'Plusieurs équipements susceptibles de tourner en même temps le matin',
+  'Consommation de fond difficile à expliquer (froid, pousse, veille)',
+  'Manque de visibilité sur la puissance souscrite actuelle et son adéquation'
+];
+
+function escapeHtml(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;')}
+
+function buildHourTable(){
+  const t=document.getElementById('hourTable');
+  let html='<tr><th>Poste</th>'+hourSlots.map(s=>`<th>${s.l}<span class="hour-sub">${s.sub}</span></th>`).join('')+'</tr>';
+  html+=hourRows.map(r=>`<tr data-hrow="${r.k}"><td><strong>${r.l}</strong></td>${hourSlots.map((_,i)=>`<td class="cell" data-i="${i}"></td>`).join('')}</tr>`).join('');
+  t.innerHTML=html;
+}
+
+function buildSeasonTable(){
+  const t=document.getElementById('seasonTable');
+  let html='<tr><th>Poste</th>'+months.map(m=>`<th>${m}</th>`).join('')+'</tr>';
+  html+=seasonRows.map(r=>`<tr data-srow="${r.k}"><td><strong>${r.l}</strong></td>${months.map((_,i)=>`<td class="cell" data-i="${i}"></td>`).join('')}</tr>`).join('');
+  t.innerHTML=html;
+}
+
+function build(){
+  // Postes checklist
+  const p=document.getElementById('posts');
+  p.innerHTML=Object.entries(posts).map(([k,o],i)=>`
+    <div class="post" data-post="${k}">
+      <span class="num">${i+1}</span>
+      <h3>${o.t}</h3>
+      <p class="mini">${o.d}</p>
+      ${o.qs.map(q=>`<div class="q"><label><input type="checkbox"> ${q}</label></div>`).join('')}
+      <div class="note"><strong>À surveiller :</strong> ${o.w}</div>
+      <label>À noter pour votre suivi</label>
+      <div class="example">${o.ex}</div>
+      <textarea class="postnotes" maxlength="180" placeholder="Notes"></textarea>
+      <div class="counter">0 / 180</div>
+    </div>`).join('');
+
+  buildHourTable();
+
+  document.getElementById('alerts').innerHTML=alerts.map(a=>`<div class="q"><label><input type="checkbox"> ${a}</label></div>`).join('');
+}
+
+function setCell(c,v){c.dataset.v=v;c.textContent=v===2?'▲':v===1?'•':'';c.classList.toggle('active',v===1);c.classList.toggle('strong',v===2)}
+document.addEventListener('click', e => {
+  if (e.target.classList.contains('cell')) {
+    const current = Number(e.target.dataset.v || 0);
+    setCell(e.target, (current + 1) % 3);
+    update();
+  }
+});
+
+function hourData(){
+  const d={};
+  document.querySelectorAll('#hourTable tr[data-hrow]').forEach(r=>{
+    d[r.dataset.hrow]=[...r.querySelectorAll('.cell')].map(c=>+c.dataset.v||0);
+  });
+  return d;
+}
+
+function seasonData(){
+  const d={};
+  document.querySelectorAll('#seasonTable tr[data-srow]').forEach(r=>{
+    d[r.dataset.srow]=[...r.querySelectorAll('.cell')].map(c=>+c.dataset.v||0);
+  });
+  return d;
+}
+
+// Tranches horaires sensibles (cumul)
+function sensitiveHours(){
+  const d=hourData();
+  return hourSlots.map((s,i)=>{
+    let score=0;
+    for(const a of Object.values(d)){if(a[i])score+=a[i];}
+    return {slot:s.l+' ('+s.sub+')',score,i};
+  }).filter(x=>x.score>=2).sort((a,b)=>b.score-a.score);
+}
+
+// Mois saisonniers sensibles
+function sensitiveMonths(){
+  const d=seasonData();
+  return months.map((m,i)=>{
+    let score=0;
+    for(const a of Object.values(d)){if(a[i])score+=a[i];}
+    return {m,score,i};
+  }).filter(x=>x.score>=1).sort((a,b)=>b.score-a.score);
+}
+
+function getScores(){
+  return Object.entries(posts).map(([k,o])=>{
+    const card=document.querySelector(`.post[data-post="${k}"]`);
+    const checks=[...card.querySelectorAll('input[type=checkbox]')];
+    const count=checks.filter(x=>x.checked).length;
+    let s=count,pw=0;
+    if(k==='four'){pw+=checks[1]?.checked?2:0;pw+=checks[2]?.checked?3:0}
+    if(k==='demarrage'){pw+=checks[2]?.checked?3:0;pw+=checks[4]?.checked?2:0}
+    if(k==='froid'){s+=checks[2]?.checked?2:0;s+=checks[4]?.checked?2:0}
+    if(k==='moteurs'){pw+=checks[3]?.checked?2:0;pw+=checks[4]?.checked?3:0}
+    if(k==='pousse'){pw+=checks[2]?.checked?2:0;s+=checks[3]?.checked?2:0;s+=checks[4]?.checked?1:0}
+    if(k==='snacking'){pw+=checks[0]?.checked?2:0;pw+=checks[5]?.checked?2:0}
+    return {k,t:o.t,count,total:s+pw,s,pw,notes:card.querySelector('textarea').value};
+  });
+}
+
+function level(v){return v>=4?'Élevée':v>=2?'Modérée':'Faible'}
+function cls(v){return v>=4?'high':v>=2?'mid':'low'}
+
+function renderAnnualCalendar(){/* Calendrier saisonnier supprimé. */}
+
+function checkedTextsForPost(k){
+  const card=document.querySelector(`.post[data-post="${k}"]`);
+  return [...card.querySelectorAll('.q label')].map(l=>{const cb=l.querySelector('input');return {text:l.textContent.trim(),checked:cb.checked}});
+}
+function checkedAlerts(){return [...document.querySelectorAll('#alerts .q label')].map(l=>{const cb=l.querySelector('input');return {text:l.textContent.trim(),checked:cb.checked}})}
+function activeHourLabelForPost(k){
+  const rowKey=posts[k]?.hourRow;
+  const values=hourData()[rowKey]||[];
+  const active=values.map((v,i)=>({v,slot:hourSlots[i]})).filter(x=>x.v>0);
+  if(!active.length){return 'Aucune tranche horaire renseignée pour ce poste.';}
+  return active.map(x=>`${x.slot.l} (${x.slot.sub})${x.v===2?' — actif et fort / concentré':' — actif'}`).join('<br>');
+}
+function activeHourLabelForPostPrint(k){
+  const rowKey=posts[k]?.hourRow;
+  const values=hourData()[rowKey]||[];
+  const active=values.map((v,i)=>({v,slot:hourSlots[i]})).filter(x=>x.v>0);
+  if(!active.length){return 'Aucune tranche horaire renseignée pour ce poste.';}
+  return active.map(x=>`${x.slot.l} (${x.slot.sub})${x.v===2?' — actif et fort / concentré':' — actif'}`).join(' ; ');
+}
+function updateCounters(){document.querySelectorAll('.postnotes').forEach(t=>{t.nextElementSibling.textContent=(t.value||'').length+' / 180'});notesSuiviCounter.textContent=(notesSuivi.value||'').length+' / 400';autresCounter.textContent=(autres_alertes.value||'').length+' / 400';}
+
+function update(){
+  updateCounters();renderAnnualCalendar();
+  const scores=getScores(),active=scores.filter(x=>x.count>0),hotH=sensitiveHours(),checked=checkedAlerts().filter(x=>x.checked);
+  const total=active.reduce((a,b)=>a+b.total,0)+checked.length+hotH.length;
+  let title='Vigilance simple',txt='Quelques points peuvent être suivis pour mieux comprendre vos usages.';
+  if(total>=16){title='Vigilance renforcée';txt='Plusieurs usages ou signaux se cumulent. Les tranches de démarrage du fournil et la simultanéité des équipements méritent une surveillance régulière.'}
+  else if(total>=8){title='Vigilance ciblée';txt='Certains postes ressortent. Le suivi doit surtout porter sur les tranches horaires où les équipements se superposent.'}
+
+  global.innerHTML=`<p><strong>${title}</strong></p><p>${txt}</p>`;
+  badges.innerHTML=scores.map(x=>`<span class="badge ${cls(x.total)}">${x.t} : ${level(x.total)}</span>`).join('');
+
+  const top=scores.filter(x=>x.count>0).sort((a,b)=>b.total-a.total).slice(0,3);
+  priorities.innerHTML=top.length?top.map(x=>`<li><strong>${x.t}</strong> — surveillance ${level(x.total).toLowerCase()} : ${posts[x.k].w}.</li>`).join(''):'<li>Aucune priorité générée.</li>';
+
+  const rows=[];
+  top.forEach(x=>rows.push([x.t,`Surconsommation : ${level(x.s).toLowerCase()} · Puissance : ${level(x.pw).toLowerCase()}.`,activeHourLabelForPost(x.k)]));
+  hotH.slice(0,2).forEach(x=>rows.push([`Tranche sensible : ${x.slot}`,'Plusieurs équipements actifs simultanément sur cette tranche.',`Sur la tranche ${x.slot}.`]));
+  monitor.innerHTML=rows.map(r=>`<tr><td><strong>${r[0]}</strong></td><td>${r[1]}</td><td>${r[2]}</td></tr>`).join('');
+  monitorCards.innerHTML=rows.map(r=>`<div class="monitor-card"><h4>${r[0]}</h4><div><strong>Ce que cela peut indiquer</strong><p>${r[1]}</p></div><div><strong>Quand surveiller ?</strong><p>${r[2]}</p></div></div>`).join('');
+  roadmap.innerHTML='<li>Identifier les équipements actifs sur la tranche 3h–6h et vérifier si un décalage est possible.</li><li>Vérifier l\'entretien des équipements froids (joints, condensateur, givre) une fois par an.</li><li>Reprendre cette checklist après tout changement d\'équipement ou d\'activité.</li>';
+}
+
+function renderPrintDoc(){
+  const scores=getScores(),active=scores.filter(x=>x.count>0),checked=checkedAlerts().filter(x=>x.checked),hotH=sensitiveHours();
+  const total=active.reduce((a,b)=>a+b.total,0)+checked.length+hotH.length;
+  let profile='Vigilance simple',profileText='Quelques points peuvent être suivis pour mieux comprendre vos usages.';
+  if(total>=16){profile='Vigilance renforcée';profileText='Plusieurs usages ou signaux se cumulent. Les tranches de démarrage et la simultanéité méritent une surveillance régulière.'}
+  else if(total>=8){profile='Vigilance ciblée';profileText='Certains postes ressortent. Le suivi doit porter sur les tranches horaires à cumul d\'équipements.'}
+
+  const postRows=scores.map(x=>{
+    const facts=checkedTextsForPost(x.k);
+    const c=facts.filter(f=>f.checked).map(f=>'✓ '+escapeHtml(f.text)).join('<br>')||'Aucun élément coché';
+    const u=facts.filter(f=>!f.checked).map(f=>'□ '+escapeHtml(f.text)).join('<br>');
+    const note=(x.notes||'').trim();
+    return `<tr><td><strong>${escapeHtml(x.t)}</strong><br><span class="print-small">${escapeHtml(posts[x.k].d)}</span></td><td>${c}${u?`<br><span class="print-small">${u}</span>`:''}</td><td><strong>À surveiller :</strong> ${escapeHtml(posts[x.k].w)}${note?`<div class="print-note">${escapeHtml(note)}</div>`:''}</td></tr>`;
+  }).join('');
+
+  const hd=hourData();
+  const hourRowsHtml=hourRows.map(r=>{
+    const vals=hd[r.k]||[];
+    return `<tr><td><strong>${escapeHtml(r.l)}</strong></td>${vals.map(v=>`<td class="${v===2?'print-intensity-2':v===1?'print-intensity-1':'print-empty-cell'}">${v===2?'▲':v===1?'•':''}</td>`).join('')}</tr>`;
+  }).join('');
+
+
+  const alertHtml=checkedAlerts().map(a=>(a.checked?'✓':'□')+' '+escapeHtml(a.text)).join('<br>');
+  const top=scores.filter(x=>x.count>0).sort((a,b)=>b.total-a.total).slice(0,3);
+
+  const monitorRows=[];
+  top.forEach(x=>monitorRows.push([x.t,`Surconsommation : ${level(x.s).toLowerCase()} · Puissance : ${level(x.pw).toLowerCase()}.`,activeHourLabelForPostPrint(x.k)]));
+  hotH.slice(0,2).forEach(x=>monitorRows.push([`Tranche : ${x.slot}`,'Plusieurs équipements actifs simultanément.',`Sur la tranche ${x.slot}.`]));
+  const mon=`<table class="print-table"><thead><tr><th>Poste / tranche</th><th>Ce que cela peut indiquer</th><th>Quand surveiller ?</th></tr></thead><tbody>${monitorRows.map(r=>`<tr><td><strong>${escapeHtml(r[0])}</strong></td><td>${escapeHtml(r[1])}</td><td>${escapeHtml(r[2])}</td></tr>`).join('')}</tbody></table>`;
+
+
+  printDoc.innerHTML=`
+  <section class="print-page"><div class="print-card"><div class="print-tag">Budget électricité</div><h1 class="print-title">🥖 Les 6 postes énergie à surveiller en boulangerie</h1><p class="print-lead">Un outil simple pour repérer vos usages à surveiller et construire une base de suivi énergie. Points de vigilance sur la <strong>surconsommation</strong> et la <strong>puissance appelée</strong>.</p><div class="print-grid-2"><div><h2 class="print-section-title">Le principe</h2><ul><li>Vous cochez uniquement des faits observables.</li><li>Vous indiquez quand vos équipements fonctionnent.</li><li>La synthèse repère les postes et les moments à surveiller.</li></ul><p class="print-small">Ce document n'est pas un audit technique ou financier.</p></div><div><h2 class="print-section-title">Vos informations</h2><p><strong>Boulangerie :</strong> ${escapeHtml(nom.value)}</p><p><strong>Date :</strong> ${escapeHtml(date.value)}</p><p><strong>Type :</strong> ${escapeHtml(segment.value)}</p></div></div><div class="print-footer">© Vanessa Pouppeville</div></div><br>
+  <div class="print-card"><div class="print-kicker">1. Checklist factuelle</div><h2 class="print-section-title">Les 6 postes énergie à surveiller</h2><table class="print-table"><thead><tr><th style="width:24%">Poste</th><th style="width:38%">Éléments renseignés</th><th style="width:38%">Surveillance & notes</th></tr></thead><tbody>${postRows}</tbody></table><div class="print-footer">© Vanessa Pouppeville</div></div></section>
+  <section class="print-page"><div class="print-card"><div class="print-kicker">2. Profil de journée — Puissance appelée & simultanéité</div><h2 class="print-section-title">Sur quelles tranches vos équipements sont-ils actifs ?</h2><table class="print-table"><thead><tr><th>Poste</th>${hourSlots.map(s=>`<th>${s.l}<br><span style="font-weight:normal">${s.sub}</span></th>`).join('')}</tr></thead><tbody>${hourRowsHtml}</tbody></table><p class="print-small">• actif — ▲ actif et fort / concentré</p><div class="print-footer">© Vanessa Pouppeville</div></div><br>
+  <div class="print-card"><div class="print-kicker">3. Signaux déjà observés</div><h2 class="print-section-title">Ce que vous avez peut-être déjà remarqué</h2><p>${alertHtml}</p>${autres_alertes.value.trim()?`<p><strong>Autres observations</strong></p><div class="print-note">${escapeHtml(autres_alertes.value.trim())}</div>`:''}<div class="print-footer">© Vanessa Pouppeville</div></div></section>
+  <section class="print-page"><div class="print-card"><div class="print-kicker">4. Synthèse</div><h2 class="print-section-title">Votre base de surveillance des risques énergie</h2><div class="print-grid-2"><div><h3>Lecture globale</h3><p><strong>${profile}</strong></p><p>${profileText}</p><div class="print-badges">${scores.map(x=>`<span class="print-badge ${cls(x.total)==='high'?'pb-high':cls(x.total)==='mid'?'pb-mid':'pb-low'}">${escapeHtml(x.t)} : ${level(x.total)}</span>`).join('')}</div><p><strong>Prochain contrôle des équipements électriques :</strong><br>${escapeHtml(nextReview.value)}</p></div><div><h3>Vos 3 priorités de surveillance</h3>${top.length?`<ol>${top.map(x=>`<li><strong>${escapeHtml(x.t)}</strong> — ${level(x.total).toLowerCase()} : ${escapeHtml(posts[x.k].w)}.</li>`).join('')}</ol>`:'<p>Aucune priorité.</p>'}<h3>Notes / décisions de suivi</h3>${notesSuivi.value.trim()?`<div class="print-note">${escapeHtml(notesSuivi.value.trim())}</div>`:'<p class="print-small">Aucune note.</p>'}</div></div><h3>Tableau de surveillance recommandé</h3>${mon}<h3 class="print-roadmap-title">Feuille de route simple</h3><ul><li>Identifier les équipements actifs sur la tranche 3h–6h et vérifier si un décalage est possible.</li><li>Vérifier l'entretien des équipements froids (joints, condensateur, givre) une fois par an.</li><li>Reprendre cette checklist après tout changement d'équipement ou d'activité.</li></ul><div class="print-vanessa"><p><strong>Un mot de Vanessa</strong></p><p>Cet outil vous aide à identifier les usages qui peuvent faire grimper votre budget électricité. Mon accompagnement permet de réduire les charges liées à votre électricité : contrat, puissance souscrite, taxes, facturation et suivi.</p><p><strong>Un doute sur votre contrat ou votre facture ?</strong> Contactez-moi pour faire le point.</p><p><strong>Vanessa Pouppeville</strong> — Conseillère énergie indépendante</p><div class="print-actions"><div><a class="print-btn" href="mailto:vanessa@vpouppeville.com">M'envoyer un email</a><div class="print-contact-detail">vanessa@vpouppeville.com</div></div><div><a class="print-btn" href="tel:+33622296566">M'appeler</a><div class="print-contact-detail">06 22 29 65 66</div></div></div></div><div class="print-footer">© Vanessa Pouppeville</div></div></section>`;
+}
+
+async function shareTool(){
+  const url='https://outil-viticole.vpouppeville.com/';
+  const title='🥖 Outil budget électricité boulangerie';
+  const text='Je vous partage cet outil interactif pour repérer vos usages personnalisés qui peuvent faire grimper le budget électricité d’une boulangerie 🥖';
+  if(navigator.share){try{await navigator.share({title,text,url});return;}catch(e){if(e&&e.name==='AbortError')return;}}
+  const subject=encodeURIComponent(title);
+  const body=encodeURIComponent('Je vous partage cet outil interactif pour repérer vos usages personnalisés qui peuvent faire grimper le budget électricité d’une boulangerie 🥖\nhttps://outil-viticole.vpouppeville.com/\n');
+  window.location.href=`mailto:?subject=${subject}&body=${body}`;
+}
+function resetAll(){if(confirm('Réinitialiser ?')){location.reload();}}
+
+build();
+document.addEventListener('input',update);
+document.addEventListener('change',update);
+btnPrint.onclick=()=>{renderPrintDoc();window.print()};
+window.addEventListener('beforeprint',renderPrintDoc);
+btnShare.onclick=shareTool;
+btnReset.onclick=resetAll;
+update();
+</script>
+</body>
+</html>
